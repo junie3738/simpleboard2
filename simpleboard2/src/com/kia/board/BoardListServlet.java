@@ -1,6 +1,7 @@
 package com.kia.board;
 
 import java.io.IOException;
+import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +16,8 @@ public class BoardListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
+		List<BoardVo> list = BoardDao.getBoardlist();
+		request.setAttribute("data", list);
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/list.jsp");
