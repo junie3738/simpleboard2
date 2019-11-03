@@ -131,12 +131,30 @@ public class BoardDao {
 			e.printStackTrace();
 		} finally {
 			close(con,ps,rs);
-		}	
-		
-		
-		
+		}		
 		return vo;
 		
 	}
+	
+	//글 삭제
+	public static int Dodelboard(int i_board) {
+		int result = 0;
+		String query = " delete from t_board where i_board = ? ";
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = getCon();
+			ps = con.prepareStatement(query);
+			ps.setInt(1, i_board);
+			result = ps.executeUpdate();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	//글 수정
 
 }
